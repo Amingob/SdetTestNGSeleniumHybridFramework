@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- Report theme: standard or dark -->
+        <theme>dark</theme>
+
+        <!-- Document encoding -->
+        <encoding>UTF-8</encoding>
+
+        <!-- Protocol for script and stylesheets (http or https) -->
+        <protocol>https</protocol>
+
+        <!-- Title of the browser tab -->
+        <documentTitle>Automation Test Report</documentTitle>
+
+        <!-- Main heading displayed inside the report -->
+        <reportName>Login Suite Execution Report</reportName>
+
+        <!-- Timestamp format -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+
+        <!-- Optional custom JavaScript or CSS -->
+        <scripts><![CDATA[]]></scripts>
+        <styles><![CDATA[]]></styles>
+    </configuration>
+</extentreports>
