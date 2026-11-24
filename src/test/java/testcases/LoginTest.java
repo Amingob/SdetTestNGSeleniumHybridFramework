@@ -1,15 +1,18 @@
 package testcases;
 
 import basetest.BaseTest;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 public class LoginTest extends BaseTest {
 
     String expectedTitle = "Guru99 Bank Manager HomePage";
 
     @Test
-    public void testLoginWithValidUserNameAndValidPassword() throws InterruptedException {
+    public void testLoginWithValidUserNameAndValidPassword() throws InterruptedException, IOException {
 
         driver.get(strURL);
 
@@ -19,19 +22,23 @@ public class LoginTest extends BaseTest {
 
         Thread.sleep(3000);
 
+        // Dismiss the alert if it pops up so the browser page can be captured
+        isAlertPresent();
+
         String actualTitle = driver.getTitle();
 
         if(actualTitle.equals(expectedTitle)){
             Assert.assertTrue(true);
             logger.info("Test has passed");
         }else{
+            captureScreen(driver, "testLoginWithValidUserNameAndValidPassword");
             Assert.assertTrue(false);
             logger.info("Test has failed");
         }
     }
 
     @Test
-    public void testLoginWithInvalidUserNameAndValidPassword() throws InterruptedException {
+    public void testLoginWithInvalidUserNameAndValidPassword() throws InterruptedException, IOException {
 
         driver.get(strURL);
 
@@ -42,6 +49,8 @@ public class LoginTest extends BaseTest {
         loginPage.clickBtnLogin();
 
         Thread.sleep(3000);
+        // Dismiss the alert if it pops up so the browser page can be captured
+        isAlertPresent();
 
         String actualTitle = driver.getTitle();
 
@@ -49,13 +58,14 @@ public class LoginTest extends BaseTest {
             Assert.assertTrue(true);
             logger.info("Test has passed");
         }else{
+            captureScreen(driver, "testLoginWithInvalidUserNameAndValidPassword");
             Assert.assertTrue(false);
             logger.info("Test has failed");
         }
     }
 
     @Test
-    public void testLoginWithValidUserNameAndInvalidPassword() throws InterruptedException {
+    public void testLoginWithValidUserNameAndInvalidPassword() throws InterruptedException, IOException {
 
         driver.get(strURL);
 
@@ -66,6 +76,8 @@ public class LoginTest extends BaseTest {
         loginPage.clickBtnLogin();
 
         Thread.sleep(3000);
+        // Dismiss the alert if it pops up so the browser page can be captured
+        isAlertPresent();
 
         String actualTitle = driver.getTitle();
 
@@ -73,13 +85,14 @@ public class LoginTest extends BaseTest {
             Assert.assertTrue(true);
             logger.info("Test has passed");
         }else{
+            captureScreen(driver, "testLoginWithValidUserNameAndInvalidPassword");
             Assert.assertTrue(false);
             logger.info("Test has failed");
         }
     }
 
     @Test
-    public void testLoginWithInvalidUserNameAndInvalidPassword() throws InterruptedException {
+    public void testLoginWithInvalidUserNameAndInvalidPassword() throws InterruptedException, IOException {
 
         driver.get(strURL);
 
@@ -90,6 +103,8 @@ public class LoginTest extends BaseTest {
         loginPage.clickBtnLogin();
 
         Thread.sleep(3000);
+        // Dismiss the alert if it pops up so the browser page can be captured
+        isAlertPresent();
 
         String actualTitle = driver.getTitle();
 
@@ -97,13 +112,14 @@ public class LoginTest extends BaseTest {
             Assert.assertTrue(true);
             logger.info("Test has passed");
         }else{
+            captureScreen(driver, "testLoginWithInvalidUserNameAndInvalidPassword");
             Assert.assertTrue(false);
             logger.info("Test has failed");
         }
     }
 
     @Test
-    public void testLoginWithNoUserNameAndNoPassword() throws InterruptedException {
+    public void testLoginWithNoUserNameAndNoPassword() throws InterruptedException, IOException {
 
         driver.get(strURL);
 
@@ -114,6 +130,8 @@ public class LoginTest extends BaseTest {
         loginPage.clickBtnLogin();
 
         Thread.sleep(3000);
+        // Dismiss the alert if it pops up so the browser page can be captured
+        isAlertPresent();
 
         String actualTitle = driver.getTitle();
 
@@ -121,6 +139,7 @@ public class LoginTest extends BaseTest {
             Assert.assertTrue(true);
             logger.info("Test has passed");
         }else{
+            captureScreen(driver, "testLoginWithNoUserNameAndNoPassword");
             Assert.assertTrue(false);
             logger.info("Test has failed");
         }

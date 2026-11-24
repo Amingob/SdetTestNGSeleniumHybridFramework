@@ -1,5 +1,9 @@
 package basetest;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,6 +16,9 @@ import pages.LoginPage;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import utils.ReadConfig;
+
+import java.io.File;
+import java.io.IOException;
 
 public class BaseTest {
 
@@ -55,5 +62,23 @@ public class BaseTest {
     public void tearDown(){
         logger.info("Test has finished");
         driver.quit();
+    }
+
+    public static void captureScreen(WebDriver driver, String tname) throws IOException {
+        isAlertPresent(); // Ensures no open alert blocks the screenshot
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File target = new File(System.getProperty("user.dir")+"/Screenshots/"+ tname +".png");
+        FileUtils.copyFile(source, target);
+        System.out.println("Screenshot taken");
+    }
+    public static boolean isAlertPresent() {
+        try {
+            driver.switchTo().alert().accept(); // Closes the "User or Password is not valid" alert
+            driver.switchTo().defaultContent();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
     }
 }

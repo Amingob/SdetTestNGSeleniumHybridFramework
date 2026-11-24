@@ -1,5 +1,6 @@
 package listener;
 
+import basetest.BaseTest;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -12,6 +13,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -57,9 +59,16 @@ public class Reporting extends TestListenerAdapter {
         String screenshotPath=System.getProperty("user.dir")+"\\Screenshots\\"+result.getName()+".png";
 
         File file = new File(screenshotPath);
-
+        // 1. Capture the screenshot right when the test fails
+        try {
+            BaseTest.captureScreen(BaseTest.driver, result.getName());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         if (file.exists()) {
             try {
+
+
                 extentTest.fail("Screen is below:",
                         MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
             } catch (IOException e) {
