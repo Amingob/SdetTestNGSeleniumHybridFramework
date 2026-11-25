@@ -1,0 +1,3 @@
+cd C:\AutomationTestingFrameWorkTraining\SdetTestNGSeleniumHybridFramework\SdetTestNGSeleniumHybridFramework
+
+mvn clean install

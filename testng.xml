@@ -7,6 +7,15 @@
     <test verbose="2" preserve-order="true" name="C:/AutomationTestingFrameWorkTraining/SdetTestNGSeleniumHybridFramework/SdetTestNGSeleniumHybridFramework">
         <parameter name="browser" value="chrome"/>
         <classes>
+            <class name="testcases.LoginTest">
+                <methods>
+                    <include name="testLoginWithValidUserNameAndValidPassword"/>
+                    <include name="testLoginWithInvalidUserNameAndValidPassword"/>
+                    <include name="testLoginWithValidUserNameAndInvalidPassword"/>
+                    <include name="testLoginWithInvalidUserNameAndInvalidPassword"/>
+                    <include name="testLoginWithNoUserNameAndNoPassword"/>
+                </methods>
+            </class>
             <class name="testcases.TC002_LoginTestDDT">
                 <methods>
                     <include name="loginTestDDT"/>
